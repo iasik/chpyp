@@ -27,6 +27,7 @@ namespace CHPv1
             dr.Read();
             if (dr.HasRows) Response.Redirect("main.aspx");
             con.Close();
+            
         }
     }
 }
