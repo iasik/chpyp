@@ -120,10 +120,9 @@
 
             <form id="form1" runat="server">
                 <div>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:yirmihaziranConnectionString %>" SelectCommand="SELECT * FROM ['KOCAELİ_İZMİT__28 HAZİRAN MAH#_$']"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:chpypConnectionString %>" SelectCommand="SELECT * FROM ['KOCAELİ_İZMİT__28 HAZİRAN MAH#_$']"></asp:SqlDataSource>
                     <asp:GridView ID="GridView1" runat="server" class="table table-striped table-hover table-bordered dataTable no-footer" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" PageSize="15">
                         <Columns>
-                            <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="Adı" HeaderText="Adı" SortExpression="Adı" />
                             <asp:BoundField DataField="Soyadı" HeaderText="Soyadı" SortExpression="Soyadı" />
                             <asp:BoundField DataField="Ana Adı" HeaderText="Ana Adı" SortExpression="Ana Adı" />
