@@ -55,14 +55,13 @@
 			<div class="top-menu">
 				<ul class="nav navbar-nav pull-right">
                     <li class="dropdown dropdown-user dropdown-dark">
-						<a href="login.aspx">
+						<a href="cikis.aspx">
 								<i class="icon-key"></i> Çıkış </a>
                         </li>
 						
-					<!-- END USER LOGIN DROPDOWN -->
                 </ul>
 			</div>
-			<!-- END TOP NAVIGATION MENU -->
+			
 		</div>
 	</div>
 	<!-- END HEADER TOP -->
