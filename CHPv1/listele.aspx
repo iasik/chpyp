@@ -80,14 +80,11 @@
 			<div class="hor-menu ">
 				<ul class="nav navbar-nav">
 					<li class="menu-dropdown">
-						<a href="index.html">Dashboard</a>
+						<a href="main.aspx">Anasayfa</a>
 					</li>
                     <li class="menu-dropdown">
-						<a href="index.html">Dashboard</a>
-					</li>
-                    <li class="menu-dropdown">
-						<a href="index.html">Dashboard</a>
-					</li>
+						<a href="listele.aspx">Listele</a>
+					</li> 
                 </ul>
 			</div>
 			<!-- END MEGA MENU -->
@@ -100,7 +97,7 @@
 		<div class="container">
 			<!-- BEGIN PAGE TITLE -->
 			<div class="page-title">
-				<h1>Dashboard <small>statistics & reports</small></h1>
+				<h1>Listele <small>Sandıklar & Kişiler</small></h1>
 			</div>
 			<!-- END PAGE TITLE -->
         </div>
@@ -110,10 +107,10 @@
 			<!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb hide">
 				<li>
-					<a href="#">Home</a><i class="fa fa-circle"></i>
+					<a href="login.aspx">Giriş</a><i class="fa fa-circle"></i>
 				</li>
 				<li class="active">
-					 Dashboard
+					 Listele
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
