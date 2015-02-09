@@ -117,28 +117,14 @@
 
             <form id="form1" runat="server">
                 <div>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:chpypConnectionString %>" SelectCommand="SELECT * FROM ['KOCAELİ_İZMİT__28 HAZİRAN MAH#_$']"></asp:SqlDataSource>
-                    <asp:GridView ID="GridView1" runat="server" class="table table-striped table-hover table-bordered dataTable no-footer" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" PageSize="15">
-                        <Columns>
-                            <asp:BoundField DataField="Adı" HeaderText="Adı" SortExpression="Adı" />
-                            <asp:BoundField DataField="Soyadı" HeaderText="Soyadı" SortExpression="Soyadı" />
-                            <asp:BoundField DataField="Ana Adı" HeaderText="Ana Adı" SortExpression="Ana Adı" />
-                            <asp:BoundField DataField="Baba Adı" HeaderText="Baba Adı" SortExpression="Baba Adı" />
-                            <asp:BoundField DataField="Dogum Yeri" HeaderText="Dogum Yeri" SortExpression="Dogum Yeri" />
-                            <asp:BoundField DataField="Doğum Tarihi" HeaderText="Doğum Tarihi" SortExpression="Doğum Tarihi" />
-                            <asp:BoundField DataField="Nufus İli" HeaderText="Nufus İli" SortExpression="Nufus İli" />
-                            <asp:BoundField DataField="Cadde-Sokak" HeaderText="Cadde-Sokak" SortExpression="Cadde-Sokak" />
-                            <asp:BoundField DataField="Kapı No" HeaderText="Kapı No" SortExpression="Kapı No" />
-                            <asp:BoundField DataField="Daire No" HeaderText="Daire No" SortExpression="Daire No" />
-                            <asp:BoundField DataField="Sandık No" HeaderText="Sandık No" SortExpression="Sandık No" />
-                            <asp:BoundField DataField="Sıra No" HeaderText="Sıra No" SortExpression="Sıra No" />
-                            <asp:BoundField DataField="Üye Mi?" HeaderText="Üye Mi?" SortExpression="Üye Mi?" />
-                            <asp:BoundField DataField="Yeni Seçmen Mi?" HeaderText="Yeni Seçmen Mi?" SortExpression="Yeni Seçmen Mi?" />
-                            <asp:BoundField DataField="Engelli Durumu" HeaderText="Engelli Durumu" SortExpression="Engelli Durumu" />
-                        </Columns>
-                        <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" />
-                        <PagerStyle CssClass="pagination" Font-Size="13px" />
-                    </asp:GridView>
+                    <asp:DropDownList ID="ddlIlce" runat="server" AutoPostBack="True"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlMah" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlSandikNo" runat="server"></asp:DropDownList>
+
+
+
+
+                    
                 </div>
             </form>
 
