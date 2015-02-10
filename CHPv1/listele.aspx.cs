@@ -20,9 +20,9 @@ namespace CHPv1
             if (!IsPostBack)
             {
                 ddl_mah_doldur();
+                 
             }
-            
-            
+                      
 
         }
 
@@ -61,6 +61,30 @@ namespace CHPv1
         {
             ddl_sandik_doldur();
         }
+
+        protected void ddlSandikNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grd_doldur();
+        }
+
+        protected void grd_doldur()
+        {
+            DataTable dt_grid = new DataTable();
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select  * From people where [Sandik No]='" + ddlSandikNo.SelectedValue + "' ", con);
+            SqlDataAdapter da_grid = new SqlDataAdapter(cmd);
+            da_grid.Fill(dt_grid);
+            con.Close();
+            grdPeople.DataSource = dt_grid;
+            grdPeople.DataBind();
+
+
+        }
+
+       
+
+       
 
         
     }
