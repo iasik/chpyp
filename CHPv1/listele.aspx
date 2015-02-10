@@ -118,8 +118,10 @@
             <form id="form1" runat="server">
                 <div>
                     <asp:DropDownList ID="ddlIlce" runat="server" AutoPostBack="True"></asp:DropDownList>
-                    <asp:DropDownList ID="ddlMah" runat="server"></asp:DropDownList>
-                    <asp:DropDownList ID="ddlSandikNo" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlMah" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMah_SelectedIndexChanged">
+                        <asp:ListItem Selected="True">seciniz</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:DropDownList ID="ddlSandikNo" runat="server" AutoPostBack="True"></asp:DropDownList>
 
 
 

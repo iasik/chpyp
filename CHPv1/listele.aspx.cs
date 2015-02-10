@@ -17,9 +17,11 @@ namespace CHPv1
             //{
             //    Response.Redirect("login.aspx");
             //}
-
-            ddl_mah_doldur();
-            ddl_sandik_doldur();
+            if (!IsPostBack)
+            {
+                ddl_mah_doldur();
+            }
+            
             
 
         }
@@ -54,5 +56,12 @@ namespace CHPv1
             ddlSandikNo.DataSource = ds_sandik;
             ddlSandikNo.DataBind();
         }
+
+        protected void ddlMah_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddl_sandik_doldur();
+        }
+
+        
     }
 }
