@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
-
 namespace CHPv1
 {
     public partial class listele : System.Web.UI.Page
@@ -22,7 +21,10 @@ namespace CHPv1
                 ddl_mah_doldur();
                  
             }
-                      
+            if(Request.QueryString["sandikNo"]!=null)
+            {
+                grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+            }
 
         }
 
@@ -64,15 +66,15 @@ namespace CHPv1
 
         protected void ddlSandikNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grd_doldur();
+            Response.Redirect("listele.aspx?sandikNo=" + ddlSandikNo.SelectedValue);
         }
 
-        protected void grd_doldur()
+        protected void grd_doldur(double sandikno)
         {
             DataTable dt_grid = new DataTable();
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select  * From people where [Sandik No]='" + ddlSandikNo.SelectedValue + "' ", con);
+            SqlCommand cmd = new SqlCommand("select  * From people where [Sandik No]='" + sandikno + "' ", con);
             SqlDataAdapter da_grid = new SqlDataAdapter(cmd);
             da_grid.Fill(dt_grid);
             con.Close();
