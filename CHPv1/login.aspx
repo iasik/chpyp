@@ -130,7 +130,7 @@
         // init background slide images
         $.backstretch([
          "theme/assets/admin/pages/media/bg/ata.jpg",
-         "theme/assets/admin/pages/media/bg/ata2.jpg"
+        // "theme/assets/admin/pages/media/bg/ata2.jpg"
         ], {
             fade: 1000,
             duration: 8000

@@ -142,6 +142,8 @@
     <Content Include="theme\assets\admin\pages\media\bg\2.jpg" />
     <Content Include="theme\assets\admin\pages\media\bg\3.jpg" />
     <Content Include="theme\assets\admin\pages\media\bg\4.jpg" />
+    <Content Include="theme\assets\admin\pages\media\bg\ata.jpg" />
+    <Content Include="theme\assets\admin\pages\media\bg\ata2.jpg" />
     <Content Include="theme\assets\admin\pages\media\blog\1.jpg" />
     <Content Include="theme\assets\admin\pages\media\blog\10.jpg" />
     <Content Include="theme\assets\admin\pages\media\blog\11.jpg" />
@@ -3898,6 +3900,10 @@
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="theme\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="theme\assets\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="theme\custom\css\" />
+    <Folder Include="theme\custom\img\" />
+    <Folder Include="theme\custom\js\" />
+    <Folder Include="theme\custom\plugins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
