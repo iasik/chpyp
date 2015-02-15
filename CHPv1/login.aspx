@@ -52,7 +52,7 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form"  id="form1" runat="server">
+	<form class="login-form"  id="form1" runat="server" defaultbutton="BtnLogin">
 		<h3 class="form-title">Giriş Yap</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
@@ -76,9 +76,6 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			
-			
-                
             <asp:Button ID="BtnLogin" runat="server" Text="Giriş" type="submit" class="btn blue pull-right" OnClick="BtnLogin_Click"  />
             
 			

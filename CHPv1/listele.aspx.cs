@@ -13,8 +13,8 @@ namespace CHPv1
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["kadi"] == null)
-            {
-                Response.Redirect("login.aspx");
+           {
+              Response.Redirect("login.aspx");
             }
             if (!IsPostBack)
             {
@@ -37,13 +37,13 @@ namespace CHPv1
 
             da_mah.Fill(ds_mah);
 
-            ddlMah.Items.Insert(0, new ListItem("seçiniz", "0"));
             cmd.CommandType = CommandType.Text;
 
             ddlMah.DataTextField = "Mahalle";
             ddlMah.DataValueField = "Mahalle";
             ddlMah.DataSource = ds_mah;
             ddlMah.DataBind();
+            ddlMah.Items.Insert(0, new ListItem("Seçiniz", "0"));
         }
         public void ddl_sandik_doldur() {
             DataSet ds_sandik = new DataSet();
@@ -57,6 +57,7 @@ namespace CHPv1
             ddlSandikNo.DataValueField = "Sandik No";
             ddlSandikNo.DataSource = ds_sandik;
             ddlSandikNo.DataBind();
+            ddlSandikNo.Items.Insert(0,new ListItem("Seçiniz","0"));
         }
 
         protected void ddlMah_SelectedIndexChanged(object sender, EventArgs e)

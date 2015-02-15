@@ -71,7 +71,7 @@
 			<!-- BEGIN HEADER SEARCH BOX -->
 			<form class="search-form" action="extra_search.html" method="GET">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search" name="query">
+					<input type="text" class="form-control" placeholder="Arama" name="query">
 					<span class="input-group-btn">
 					<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
 					</span>
@@ -109,9 +109,9 @@
     <div class="page-content">
 		<div class="container">
 			<!-- BEGIN PAGE BREADCRUMB -->
-			<ul class="page-breadcrumb breadcrumb hide">
+			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="login.aspx">Giriş</a><i class="fa fa-circle"></i>
+					<a href="main.aspx">Anasayfa</a><i class="fa fa-circle"></i>
 				</li>
 				<li class="active">
 					 Anasayfa
@@ -125,7 +125,7 @@
 
         <div class="page-footer">
 	<div class="container">
-		 2014 &copy; Metronic. All Rights Reserved.
+		 2014 &copy; Chp Kocaeli İl Yönetim Başkanlığı. Tüm Hakları Saklıdır.
 	</div>
 </div>
 <div class="scroll-to-top">
