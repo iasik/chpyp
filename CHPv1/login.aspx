@@ -27,20 +27,26 @@
 <link id="style_color" href="theme/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
 <link href="theme/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="theme/assets/admin/layout/img/chp-icon.ico">
 </head>
 <!-- END HEAD -->
     
 <body class="login">
 <!-- BEGIN LOGO -->
-<div class="logo">
-	<a href="index.html">
+<div class="logo" style="margin-bottom:0px;">
+	<a href="#">
 	<img src="theme/assets/admin/layout/img/chp_logo_300.png" alt=""/>
+    
 	</a>
+    
 </div>
+
 <!-- END LOGO -->
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-<div class="menu-toggler sidebar-toggler">
+<div class="container">
+    
+    <h3 style="text-align:center;font-weight:300;color:#eee;">CHP Kocaeli İl Yönetim Paneli</h3>
+    
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGIN -->
