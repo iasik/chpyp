@@ -12,10 +12,10 @@ namespace CHPv1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["kadi"] == null)
-            //{
-            //    Response.Redirect("login.aspx");
-            //}
+            if (Session["kadi"] == null)
+           {
+              Response.Redirect("login.aspx");
+            }
             if (!IsPostBack)
             {
                 ddl_mah_doldur();
@@ -82,6 +82,11 @@ namespace CHPv1
             grdPeople.DataSource = dt_grid;
             grdPeople.DataBind();
 
+
+        }
+
+        protected void RowUpdate(object sender, GridViewEditEventArgs e)
+        {
 
         }
 
