@@ -84,6 +84,11 @@ namespace CHPv1
 
         }
 
+        protected void RowUpdate(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
        
 
        
