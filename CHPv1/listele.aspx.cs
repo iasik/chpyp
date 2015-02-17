@@ -124,41 +124,41 @@ namespace CHPv1
             //grdPeople.EditIndex = -1;
             //grdPeople.DataBind();
 
-            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            int id = e.RowIndex;
-            //int userid = Convert.ToInt32(grdPeople.DataKeys[e.RowIndex].Value.ToString());
-            GridViewRow row = (GridViewRow)grdPeople.Rows[e.RowIndex];
-            //row.Cells[0].Controls[0];
-            TextBox gridAdi = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridSoyadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox2");
-            TextBox gridDogTar = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridCaddeSokak = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridKapiNo = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridDaireNo = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridAciklama = (TextBox)row.Cells[0].Controls[0];
-            // DropDownList gridParti = (DropDownList)grdPeople.Rows[id].FindControl("DropDownList1");
+            //SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            //if (con.State == ConnectionState.Closed)
+            //{
+            //    con.Open();
+            //}
+            //int id = e.RowIndex;
+            ////int userid = Convert.ToInt32(grdPeople.DataKeys[e.RowIndex].Value.ToString());
+            //GridViewRow row = (GridViewRow)grdPeople.Rows[e.RowIndex];
+            ////row.Cells[0].Controls[0];
+            //TextBox gridAdi = (TextBox)row.Cells[0].Controls[0];
+            //TextBox gridSoyadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox2");
+            //TextBox gridDogTar = (TextBox)row.Cells[0].Controls[0];
+            //TextBox gridCaddeSokak = (TextBox)row.Cells[0].Controls[0];
+            //TextBox gridKapiNo = (TextBox)row.Cells[0].Controls[0];
+            //TextBox gridDaireNo = (TextBox)row.Cells[0].Controls[0];
+            //TextBox gridAciklama = (TextBox)row.Cells[0].Controls[0];
+            //// DropDownList gridParti = (DropDownList)grdPeople.Rows[id].FindControl("DropDownList1");
 
 
-            SqlCommand comd = new SqlCommand();
-            comd.Connection = con;
-            //comd.CommandType = CommandType.StoredProcedure;
-            //comd.CommandText = "usr_update";
-            comd.Parameters.AddWithValue("@Adı", gridAdi);
-            comd.Parameters.AddWithValue("@Soyadı", gridSoyadi);
-            comd.Parameters.AddWithValue("@[Doğum Tarihi]", gridDogTar);
-            comd.Parameters.AddWithValue("@[Cadde-Sokak]", gridCaddeSokak);
-            comd.Parameters.AddWithValue("@[Kapı No]", gridKapiNo);
-            comd.Parameters.AddWithValue("@[Daire No]", gridDaireNo);
-            comd.Parameters.AddWithValue("@Aciklama", gridAciklama);
+            //SqlCommand comd = new SqlCommand();
+            //comd.Connection = con;
+            ////comd.CommandType = CommandType.StoredProcedure;
+            ////comd.CommandText = "usr_update";
+            //comd.Parameters.AddWithValue("@Adı", gridAdi);
+            //comd.Parameters.AddWithValue("@Soyadı", gridSoyadi);
+            //comd.Parameters.AddWithValue("@[Doğum Tarihi]", gridDogTar);
+            //comd.Parameters.AddWithValue("@[Cadde-Sokak]", gridCaddeSokak);
+            //comd.Parameters.AddWithValue("@[Kapı No]", gridKapiNo);
+            //comd.Parameters.AddWithValue("@[Daire No]", gridDaireNo);
+            //comd.Parameters.AddWithValue("@Aciklama", gridAciklama);
 
-            comd.ExecuteNonQuery();
-            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
-            grdPeople.EditIndex = -1;
-            grdPeople.DataBind();
+            //comd.ExecuteNonQuery();
+            //grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+            //grdPeople.EditIndex = -1;
+            //grdPeople.DataBind();
         }
 
         protected void RowCancelling(object sender, GridViewCancelEditEventArgs e)
