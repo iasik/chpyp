@@ -160,7 +160,7 @@
 
         <div class="page-footer">
 	<div class="container">
-		 2014 &copy; Chp Kocaeli İl Yönetim Başkanlığı. Tüm Hakları Saklıdır.
+		 2015 &copy; Chp Kocaeli İl Yönetim Başkanlığı. Tüm Hakları Saklıdır.
 	</div>
 </div>
 <div class="scroll-to-top">
