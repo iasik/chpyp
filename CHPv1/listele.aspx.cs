@@ -81,7 +81,7 @@ namespace CHPv1
             con.Close();
             grdPeople.DataSource = dt_grid;
             grdPeople.DataBind();
-            //kk
+            //kkaya
 
         }
 
