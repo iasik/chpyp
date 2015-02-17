@@ -85,5 +85,100 @@ namespace CHPv1
 
         }
 
+        protected void RowUpdate(object sender, GridViewEditEventArgs e)
+        {
+            // Edit click
+
+            grdPeople.EditIndex = e.NewEditIndex;
+            grdPeople.DataBind();
+            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+
+        }
+
+        protected void RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            //// Update click
+            ////string cnct = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["grid"].ConnectionString;
+            //SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            //if (con.State == ConnectionState.Closed)
+            //    con.Open();
+            //int id = e.RowIndex;
+            ////string tcnogrid = grdPeople.DataKeys[e.RowIndex].Value.ToString();
+            ////TextBox gridtcno = (TextBox)grdPeople.Rows[id].FindControl("Textbox1"); ////Güncelleme için Gridview deki EditItemTemplatefield alanında bulunan Textbox a yazılan yeni değeri alıyoruz.
+            ////TextBox gridadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox2");
+            ////TextBox gridsoyadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox3");
+            ////TextBox griddgtarh = (TextBox)grdPeople.Rows[id].FindControl("Textbox5");
+            ///////////
+
+            ////SqlCommand comd = new SqlCommand();
+            ////comd.Connection = con;
+            ////comd.CommandType = CommandType.StoredProcedure;
+            ////comd.CommandText = "usr_update";
+            ////comd.Parameters.AddWithValue("@tcno", tcnogrid);
+            ////comd.Parameters.AddWithValue("@updttcno", gridtcno.Text);
+            ////comd.Parameters.AddWithValue("@adi", gridadi.Text);
+            ////comd.Parameters.AddWithValue("@soyadi", gridsoyadi.Text);
+            ////comd.Parameters.AddWithValue("@dtarih", griddgtarh.Text);
+            //comd.ExecuteNonQuery();
+            //grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+            //grdPeople.EditIndex = -1;
+            //grdPeople.DataBind();
+
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int id = e.RowIndex;
+            //int userid = Convert.ToInt32(grdPeople.DataKeys[e.RowIndex].Value.ToString());
+            GridViewRow row = (GridViewRow)grdPeople.Rows[e.RowIndex];
+            //row.Cells[0].Controls[0];
+            TextBox gridAdi = (TextBox)row.Cells[0].Controls[0];
+            TextBox gridSoyadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox2");
+            TextBox gridDogTar = (TextBox)row.Cells[0].Controls[0];
+            TextBox gridCaddeSokak = (TextBox)row.Cells[0].Controls[0];
+            TextBox gridKapiNo = (TextBox)row.Cells[0].Controls[0];
+            TextBox gridDaireNo = (TextBox)row.Cells[0].Controls[0];
+            TextBox gridAciklama = (TextBox)row.Cells[0].Controls[0];
+            // DropDownList gridParti = (DropDownList)grdPeople.Rows[id].FindControl("DropDownList1");
+
+
+            SqlCommand comd = new SqlCommand();
+            comd.Connection = con;
+            //comd.CommandType = CommandType.StoredProcedure;
+            //comd.CommandText = "usr_update";
+            comd.Parameters.AddWithValue("@Adı", gridAdi);
+            comd.Parameters.AddWithValue("@Soyadı", gridSoyadi);
+            comd.Parameters.AddWithValue("@[Doğum Tarihi]", gridDogTar);
+            comd.Parameters.AddWithValue("@[Cadde-Sokak]", gridCaddeSokak);
+            comd.Parameters.AddWithValue("@[Kapı No]", gridKapiNo);
+            comd.Parameters.AddWithValue("@[Daire No]", gridDaireNo);
+            comd.Parameters.AddWithValue("@Aciklama", gridAciklama);
+
+            comd.ExecuteNonQuery();
+            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+            grdPeople.EditIndex = -1;
+            grdPeople.DataBind();
+        }
+
+        protected void RowCancelling(object sender, GridViewCancelEditEventArgs e)
+        {
+            // Cancel click
+            grdPeople.EditIndex = -1;
+            grdPeople.DataBind();
+            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+
+        }
+
+        protected void RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            // Delete click
+        }
+
+       
+
+       
+
+        
     }
 }

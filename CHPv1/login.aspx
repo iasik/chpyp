@@ -45,7 +45,7 @@
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="container">
     
-    <h3 style="text-align:center;font-weight:300;color:#eee;">CHP Kocaeli İl Yönetim Paneli</h3>
+    <h3 style="text-align:center;font-weight:300;color:#eee;">CHP Kocaeli İl Başkanlığı</h3>
     
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
