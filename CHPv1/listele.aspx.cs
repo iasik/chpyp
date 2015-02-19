@@ -10,6 +10,8 @@ namespace CHPv1
 {
     public partial class listele : System.Web.UI.Page
     {
+
+        int personID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["kadi"] == null)
@@ -19,6 +21,7 @@ namespace CHPv1
             if (!IsPostBack)
             {
                 ddl_mah_doldur();
+               
 
             }
             if (Request.QueryString["sandikNo"] != null)
@@ -62,6 +65,21 @@ namespace CHPv1
             ddlSandikNo.Items.Insert(0, new ListItem("Seçiniz", "0"));
         }
 
+        public void partiDoldur() {
+            DataSet ds_parti = new DataSet();
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select PartiIsmi, PartiID from parti",con);
+            SqlDataAdapter da_parti = new SqlDataAdapter(cmd);
+            da_parti.Fill(ds_parti);
+            con.Close();
+            ddl_parti.DataTextField = "PartiIsmi";
+            ddl_parti.DataValueField = "PartiID";
+            ddl_parti.DataSource = ds_parti;
+            ddl_parti.DataBind();
+            
+        }
+
         protected void ddlMah_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddl_sandik_doldur();
@@ -77,15 +95,71 @@ namespace CHPv1
             DataTable dt_grid = new DataTable();
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select Adı, Soyadı, [Doğum Tarihi], [Cadde-Sokak], [Kapı No], [Daire No], Aciklama, PartiIsmi  From people, parti where people.PartiID = parti.PartiID AND [Sandik No]='" + sandikno + "' ", con);
+            SqlCommand cmd = new SqlCommand("select id, Adı, Soyadı, [Doğum Tarihi], [Cadde-Sokak], [Kapı No], [Daire No], Aciklama, PartiIsmi  From people, parti where people.PartiID = parti.PartiID AND [Sandik No]='" + sandikno + "' ", con);
             SqlDataAdapter da_grid = new SqlDataAdapter(cmd);
             da_grid.Fill(dt_grid);
-            con.Close();
+            
             grdPeople.DataSource = dt_grid;
             grdPeople.DataBind();
-            //kkaya
+            con.Close();
 
         }
+
+        
+
+        protected void grdPeople_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdPeople.PageIndex = e.NewPageIndex;
+            grdPeople.DataBind();
+        }
+
+        protected void grdPeople_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            personID = Convert.ToInt32(grdPeople.SelectedValue);
+            fillperson(personID);
+            partiDoldur();
+
+        }
+
+        public void fillperson(int selected_id) {
+
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select Adı,Soyadı from people where id=" + selected_id+ "",con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read()) {
+                lbl_lname.Text = dr["Soyadı"].ToString();
+                lbl_name.Text = dr["Adı"].ToString();
+            }
+            con.Close();
+
+        }
+
+        protected void btn_update_Click(object sender, EventArgs e)
+        {
+            personID = Convert.ToInt32(grdPeople.SelectedValue);
+            updatePerson(personID);
+
+        }
+
+        public void updatePerson(int id)
+        {
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update people set PartiID = @PartiID,Aciklama=@Aciklama where id=" + id + "", con);
+            cmd.CommandType = CommandType.Text;
+            {
+                cmd.Parameters.AddWithValue("@PartiID",ddl_parti.SelectedValue);
+                cmd.Parameters.AddWithValue("@Aciklama",txt_info.Text);
+            
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            
+        }
+        
 
     }
 }
