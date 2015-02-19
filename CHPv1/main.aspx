@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="main.aspx.cs" Inherits="CHPv1.main" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -118,6 +120,21 @@
 				</li>
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
+
+            <div class="row">
+                <asp:Chart ID="Chart1" runat="server" Height="408px" Width="488px">
+                <Series>
+                
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                </ChartAreas>
+                <Legends>
+                    <asp:Legend Name="Legend2">
+                    </asp:Legend>
+                </Legends>
+            </asp:Chart>
+            </div>
         </div>
     </div>
 </div>
