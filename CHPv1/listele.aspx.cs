@@ -28,6 +28,7 @@ namespace CHPv1
             {
                 grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
             }
+            pnl_update.Visible = false;
 
         }
 
@@ -116,6 +117,10 @@ namespace CHPv1
         protected void grdPeople_SelectedIndexChanged(object sender, EventArgs e)
         {
             personID = Convert.ToInt32(grdPeople.SelectedValue);
+            if (personID != null)
+            {
+                pnl_update.Visible = true;
+            }
             fillperson(personID);
             partiDoldur();
 
@@ -138,11 +143,14 @@ namespace CHPv1
         protected void btn_update_Click(object sender, EventArgs e)
         {
             personID = Convert.ToInt32(grdPeople.SelectedValue);
-            updatePerson(personID);
+            if (updatePerson(personID))
+            {
+                Response.Redirect("listele.aspx?sandikNo=" + Request.QueryString["sandikNo"]);
+            }
 
         }
 
-        public void updatePerson(int id)
+        public bool updatePerson(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
@@ -155,7 +163,7 @@ namespace CHPv1
             }
             cmd.ExecuteNonQuery();
             con.Close();
-
+            return true;
 
             
         }
