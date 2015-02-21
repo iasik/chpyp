@@ -34,168 +34,184 @@
 <link rel="shortcut icon" href="theme/assets/admin/layout/img/chp-icon.ico">
 <!-- END HEAD -->
 </head>
-<body style="min-height:100%">
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
-
+<body style="min-height: 100%">
     <div class="page-header">
-	<!-- BEGIN HEADER TOP -->
-	<div class="page-header-top">
-		<div class="container">
-			<!-- BEGIN LOGO -->
-			<div class="page-logo">
-				<a href="main.aspx"><img src="theme/assets/admin/layout3/img/chp_logo_2.png" alt="logo" class="logo-default"></a>
-			</div>
-			<!-- END LOGO -->
-			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-			<a href="javascript:;" class="menu-toggler"></a>
-			<!-- END RESPONSIVE MENU TOGGLER -->
-			<!-- BEGIN TOP NAVIGATION MENU -->
-			<div class="top-menu">
-				<ul class="nav navbar-nav pull-right">
-                    <li class="dropdown dropdown-user dropdown-dark">
-						<a href="cikis.aspx">
-								<i class="icon-key"></i> Çıkış </a>
+        <!-- BEGIN HEADER TOP -->
+        <div class="page-header-top">
+            <div class="container">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="main.aspx">
+                        <img src="theme/assets/admin/layout3/img/chp_logo_2.png" alt="logo" class="logo-default"></a>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler"></a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="cikis.aspx">
+                                <i class="icon-key"></i>Çıkış </a>
                         </li>
-						
-                </ul>
-			</div>
-			
-		</div>
-	</div>
-	<!-- END HEADER TOP -->
-	<!-- BEGIN HEADER MENU -->
-	<div class="page-header-menu">
-		<div class="container">
-			<!-- BEGIN HEADER SEARCH BOX -->
-			<form class="search-form" action="extra_search.html" method="GET">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Arama" name="query">
-					<span class="input-group-btn">
-					<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-					</span>
-				</div>
-			</form>
-			<!-- END HEADER SEARCH BOX -->
-			<!-- BEGIN MEGA MENU -->
-			<!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
-			<!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-			<div class="hor-menu ">
-				<ul class="nav navbar-nav">
-					<li class="menu-dropdown">
-						<a href="main.aspx">Anasayfa</a>
-					</li>
-                    <li class="menu-dropdown">
-						<a href="listele.aspx">Listele</a>
-					</li> 
-                </ul>
-			</div>
-			<!-- END MEGA MENU -->
-		</div>
-	</div>
-	<!-- END HEADER MENU -->
-<!-- BEGIN PAGE CONTAINER -->
-<div class="page-container">
-    <div class="page-head">
-		<div class="container">
-			<!-- BEGIN PAGE TITLE -->
-			<div class="page-title">
-				<h1>Anasayfa <small>İstatistikler & Raporlar</small></h1>
-			</div>
-			<!-- END PAGE TITLE -->
-        </div>
-    </div>
-    <div class="page-content">
-		<div class="container">
-			<!-- BEGIN PAGE BREADCRUMB -->
-			<ul class="page-breadcrumb breadcrumb">
-				<li>
-					<a href="main.aspx">Anasayfa</a><i class="fa fa-circle"></i>
-				</li>
-				<li class="active">
-					 Anasayfa
-				</li>
-			</ul>
-			<!-- END PAGE BREADCRUMB -->
 
-            <div class="row">
-                <asp:Chart ID="Chart1" runat="server" Height="408px" Width="488px">
-                <Series>
-                
-                </Series>
-                <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
-                </ChartAreas>
-                <Legends>
-                    <asp:Legend Name="Legend2">
-                    </asp:Legend>
-                </Legends>
-            </asp:Chart>
+                    </ul>
+                </div>
+
             </div>
         </div>
-    </div>
-</div>
+        <!-- END HEADER TOP -->
+        <!-- BEGIN HEADER MENU -->
+        <div class="page-header-menu">
+            <div class="container">
+                <!-- BEGIN HEADER SEARCH BOX -->
+                <form class="search-form" action="extra_search.html" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Arama" name="query">
+                        <span class="input-group-btn">
+                            <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                        </span>
+                    </div>
+                </form>
+                <!-- END HEADER SEARCH BOX -->
+                <!-- BEGIN MEGA MENU -->
+                <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+                <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+                <div class="hor-menu ">
+                    <ul class="nav navbar-nav">
+                        <li class="menu-dropdown">
+                            <a href="main.aspx">Anasayfa</a>
+                        </li>
+                        <li class="menu-dropdown">
+                            <a href="listele.aspx">Listele</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MEGA MENU -->
+            </div>
+        </div>
+        <!-- END HEADER MENU -->
+        <!-- BEGIN PAGE CONTAINER -->
+        <div class="page-container">
+            <div class="page-head">
+                <div class="container">
+                    <!-- BEGIN PAGE TITLE -->
+                    <div class="page-title">
+                        <h1>Anasayfa <small>İstatistikler & Raporlar</small></h1>
+                    </div>
+                    <!-- END PAGE TITLE -->
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="container">
+                    <!-- BEGIN PAGE BREADCRUMB -->
+                    <ul class="page-breadcrumb breadcrumb">
+                        <li>
+                            <a href="main.aspx">Anasayfa</a><i class="fa fa-circle"></i>
+                        </li>
+                        <li class="active">Anasayfa
+                        </li>
+                    </ul>
+                    <!-- END PAGE BREADCRUMB -->
+                    <form id="form1" runat="server">
+                        <div class="row margin-bottom-20">
+                            <div class="form-group">
+                                <label class="col-md-1 control-label">İlçe</label>
+                                <div class="col-md-3">
+                                    <asp:DropDownList class="form-control" ID="ddlIlce" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlIlce_SelectedIndexChanged">
+                                        <asp:ListItem Selected="True" Text="Seçiniz..." Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <label class="col-md-1 control-label">Mahalle</label>
+                                <div class="col-md-3">
+                                    <asp:DropDownList class="form-control" ID="ddlMah" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMah_SelectedIndexChanged">
+                                        <asp:ListItem Selected="True" Text="Seçiniz..." Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <label class="col-md-1 control-label">Sandık</label>
+                                <div class="col-md-3">
+                                    <asp:DropDownList class="form-control" ID="ddlSandikNo" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Selected="True" Text="Seçiniz..." Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <asp:Chart ID="Chart1" runat="server" Height="408px" Width="488px">
+                            <Series>
+                            </Series>
+                            <ChartAreas>
+                                <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                            </ChartAreas>
+                            <Legends>
+                                <asp:Legend Name="Legend2">
+                                </asp:Legend>
+                            </Legends>
+                        </asp:Chart>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <div class="page-footer">
-	<div class="container">
-		 2014 &copy; Chp Kocaeli İl Yönetim Başkanlığı. Tüm Hakları Saklıdır.
-	</div>
-</div>
-<div class="scroll-to-top">
-	<i class="icon-arrow-up"></i>
-</div>
-<!-- END FOOTER -->
-<!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
+            <div class="container">
+                2014 &copy; Chp Kocaeli İl Yönetim Başkanlığı. Tüm Hakları Saklıdır.
+            </div>
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+        <!-- END FOOTER -->
+        <!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->
+        <!-- BEGIN CORE PLUGINS -->
+        <!--[if lt IE 9]>
 <script src="theme/assets/global/plugins/respond.min.js"></script>
 <script src="theme/assets/global/plugins/excanvas.min.js"></script> 
 <![endif]-->
-<script src="theme/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-<script src="theme/assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="theme/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
-<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
-<script src="theme/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
-<script src="theme/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="theme/assets/global/scripts/metronic.js" type="text/javascript"></script>
-<script src="theme/assets/admin/layout3/scripts/layout.js" type="text/javascript"></script>
-<script src="theme/assets/admin/layout3/scripts/demo.js" type="text/javascript"></script>
-<script src="theme/assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
-<script src="theme/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-<script>
-    jQuery(document).ready(function () {
-        Metronic.init(); // init metronic core componets
-        Layout.init(); // init layout
-        Demo.init(); // init demo(theme settings page)
-        Index.init(); // init index page
-        Tasks.initDashboardWidget(); // init tash dashboard widget
-    });
-</script>
-<!-- END JAVASCRIPTS -->
-</div>
+        <script src="theme/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+        <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+        <script src="theme/assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="theme/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+        <!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+        <script src="theme/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
+        <script src="theme/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="theme/assets/global/scripts/metronic.js" type="text/javascript"></script>
+        <script src="theme/assets/admin/layout3/scripts/layout.js" type="text/javascript"></script>
+        <script src="theme/assets/admin/layout3/scripts/demo.js" type="text/javascript"></script>
+        <script src="theme/assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
+        <script src="theme/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <script>
+            jQuery(document).ready(function () {
+                Metronic.init(); // init metronic core componets
+                Layout.init(); // init layout
+                Demo.init(); // init demo(theme settings page)
+                Index.init(); // init index page
+                Tasks.initDashboardWidget(); // init tash dashboard widget
+            });
+        </script>
+        <!-- END JAVASCRIPTS -->
+    </div>
 </body>
 </html>
