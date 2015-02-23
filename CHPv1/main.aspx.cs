@@ -26,8 +26,9 @@ namespace CHPv1
             if (!IsPostBack)
             {
                 ddl_ilce_doldur();
+                pnlGrafik.Visible = false;
             }
-            pnlGrafik.Visible = false;
+            
         }
 
         public void ddl_ilce_doldur()
@@ -95,6 +96,7 @@ namespace CHPv1
             
             if (ddlIlce.SelectedValue!="0")
             {
+                pnlGrafik.Visible = true;
                 if (ddlMah.SelectedValue != "0")
                 {
                     if (ddlSandikNo.SelectedValue != "0")
@@ -122,7 +124,7 @@ namespace CHPv1
                 }
                 else
                 {
-                    pnlGrafik.Visible = true;
+                    
                     SqlCommand cmd = new SqlCommand("select count(*) from people where partiID=2 and ilceID=" + ddlIlce.SelectedValue + "", con);
                     chp = Convert.ToInt32(cmd.ExecuteScalar());
                     SqlCommand cmd2 = new SqlCommand("select count(*) from people where partiID=3 and ilceID=" + ddlIlce.SelectedValue + "", con);
