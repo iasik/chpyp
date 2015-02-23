@@ -119,56 +119,63 @@
                 <div class="row margin-bottom-20">
                     <div class="form-group">
                         <label class="col-md-1 control-label">İlçe</label>
-                        <div class="col-md-3">   
+                        <div class="col-md-3">
                             <asp:DropDownList class="form-control" ID="ddlIlce" runat="server" AutoPostBack="True">
                                 <asp:ListItem Selected="True" Text="Seçiniz..." Value="0"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <label class="col-md-1 control-label">Mahalle</label>
-                        <div class="col-md-3"> 
+                        <div class="col-md-3">
                             <asp:DropDownList class="form-control" ID="ddlMah" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMah_SelectedIndexChanged">
                                 <asp:ListItem Selected="True" Text="Seçiniz..." Value="0"></asp:ListItem>
                             </asp:DropDownList>
-                        </div>                   
+                        </div>
                         <label class="col-md-1 control-label">Sandık</label>
-                        <div class="col-md-3"> 
+                        <div class="col-md-3">
                             <asp:DropDownList class="form-control" ID="ddlSandikNo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlSandikNo_SelectedIndexChanged">
                                 <asp:ListItem Selected="True" Text="Seçiniz..." Value="0"></asp:ListItem>
-                    </asp:DropDownList>
+                            </asp:DropDownList>
                         </div>
                     </div>
                 </div>
-               
-                <div class="col-md-12 row">
-                        <div class="col-md-3">
-                        <asp:Label ID="lbl_name" runat="server" Text="Label"></asp:Label>
-                    </div>
-                        <div class="col-md-3">
-                        <asp:Label ID="lbl_lname" runat="server" Text="Label"></asp:Label>
-                    </div>
-                        <div class="col-md-3">
-                        <asp:DropDownList ID="ddl_parti" runat="server"></asp:DropDownList>   
-                    </div>
-                        <div class="col-md-3">
-                         <asp:TextBox ID="txt_info" runat="server"></asp:TextBox>
-                            <asp:Button ID="btn_update" runat="server" Text="Kaydet" OnClick="btn_update_Click" />
-                    </div>
-                    
-                    
+                <asp:Panel ID="pnl_update" runat="server">
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-3" style="padding-left: 0;">
+                            <label class="col-md-6 control-label">
+                                <asp:Label ID="lbl_name" runat="server" Text="Label"></asp:Label>
+                            </label>
 
-
-                </div>
-
-                    <div class="dataTables_wrapper no-footer">
+                            <label class="col-md-6 control-label">
+                                <asp:Label ID="lbl_lname" runat="server" Text="Label"></asp:Label>
+                            </label>
+                        </div>
+                        <label class="col-md-1 control-label">Parti</label>
+                        <div class="col-md-5">
+                            <asp:DropDownList class="form-control" ID="ddl_parti" runat="server"></asp:DropDownList>
+                        </div>
+                        
+                        
+                        <div class="col-md-1">
+                            <asp:Button class="btn default" ID="btn_update" runat="server" Text="Kaydet" OnClick="btn_update_Click" />
+                        </div>
+                        
+                    </div>
+                    <div class="row margin-bottom-20">
+                            <label class="col-md-2 control-label">Açıklama</label>
+                            <div class="col-md-8">
+                                <asp:TextBox class="form-control" ID="txt_info" TextMode="multiline" Columns="50" Rows="2" runat="server"></asp:TextBox>
+                            </div>
+                    </div>
+                </asp:Panel>
+                <div class="dataTables_wrapper no-footer">
                     <asp:GridView ID="grdPeople" runat="server" AllowPaging="True" CssClass="table table-striped table-hover table-bordered dataTable no-footer" EnableSortingAndPagingCallbacks="False" AutoGenerateSelectButton="True" DataKeyNames="id" EnableTheming="True" OnPageIndexChanging="grdPeople_PageIndexChanging" OnSelectedIndexChanged="grdPeople_SelectedIndexChanged" >
                         <PagerStyle  CssClass="DDFooter"/>
                         <PagerSettings
                             Mode="NumericFirstLast"
                             PageButtonCount="5"
                         />
-
-                        </asp:GridView>
-                    </div>
+                     </asp:GridView>
+                </div>
             </form>
 
 

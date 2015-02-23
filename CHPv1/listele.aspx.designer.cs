@@ -67,6 +67,15 @@ namespace CHPv1 {
         protected global::System.Web.UI.WebControls.DropDownList ddlSandikNo;
         
         /// <summary>
+        /// pnl_update control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_update;
+        
+        /// <summary>
         /// lbl_name control.
         /// </summary>
         /// <remarks>
@@ -94,15 +103,6 @@ namespace CHPv1 {
         protected global::System.Web.UI.WebControls.DropDownList ddl_parti;
         
         /// <summary>
-        /// txt_info control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_info;
-        
-        /// <summary>
         /// btn_update control.
         /// </summary>
         /// <remarks>
@@ -110,6 +110,15 @@ namespace CHPv1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_update;
+        
+        /// <summary>
+        /// txt_info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_info;
         
         /// <summary>
         /// grdPeople control.
