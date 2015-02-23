@@ -10,25 +10,29 @@ namespace CHPv1
 {
     public partial class listele : System.Web.UI.Page
     {
+
+        int personID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["kadi"] == null)
-           {
-              Response.Redirect("login.aspx");
+            {
+                Response.Redirect("login.aspx");
             }
             if (!IsPostBack)
             {
                 ddl_mah_doldur();
-                 
+               
+
             }
-            if(Request.QueryString["sandikNo"]!=null)
+            if (Request.QueryString["sandikNo"] != null)
             {
                 grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
             }
 
         }
 
-        public void ddl_mah_doldur() {
+        public void ddl_mah_doldur()
+        {
             SqlConnection conn = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("select distinct Mahalle From people", conn);
             DataSet ds_mah = new DataSet();
@@ -45,11 +49,12 @@ namespace CHPv1
             ddlMah.DataBind();
             ddlMah.Items.Insert(0, new ListItem("Seçiniz", "0"));
         }
-        public void ddl_sandik_doldur() {
+        public void ddl_sandik_doldur()
+        {
             DataSet ds_sandik = new DataSet();
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select DISTINCT [Sandik No] From people where Mahalle='" + ddlMah.SelectedValue +"' ORDER BY [Sandik No] ASC", con);
+            SqlCommand cmd = new SqlCommand("select DISTINCT [Sandik No] From people where Mahalle='" + ddlMah.SelectedValue + "' ORDER BY [Sandik No] ASC", con);
             SqlDataAdapter da_sandik = new SqlDataAdapter(cmd);
             da_sandik.Fill(ds_sandik);
             con.Close();
@@ -57,7 +62,22 @@ namespace CHPv1
             ddlSandikNo.DataValueField = "Sandik No";
             ddlSandikNo.DataSource = ds_sandik;
             ddlSandikNo.DataBind();
-            ddlSandikNo.Items.Insert(0,new ListItem("Seçiniz","0"));
+            ddlSandikNo.Items.Insert(0, new ListItem("Seçiniz", "0"));
+        }
+
+        public void partiDoldur() {
+            DataSet ds_parti = new DataSet();
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select PartiIsmi, PartiID from parti",con);
+            SqlDataAdapter da_parti = new SqlDataAdapter(cmd);
+            da_parti.Fill(ds_parti);
+            con.Close();
+            ddl_parti.DataTextField = "PartiIsmi";
+            ddl_parti.DataValueField = "PartiID";
+            ddl_parti.DataSource = ds_parti;
+            ddl_parti.DataBind();
+            
         }
 
         protected void ddlMah_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,110 +95,73 @@ namespace CHPv1
             DataTable dt_grid = new DataTable();
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select Adı, Soyadı, [Doğum Tarihi], [Cadde-Sokak], [Kapı No], [Daire No], Aciklama, PartiIsmi  From people, parti where people.PartiID = parti.PartiID AND [Sandik No]='" + sandikno + "' ", con);
+            SqlCommand cmd = new SqlCommand("select id, Adı, Soyadı, [Doğum Tarihi], [Cadde-Sokak], [Kapı No], [Daire No], Aciklama, PartiIsmi  From people, parti where people.PartiID = parti.PartiID AND [Sandik No]='" + sandikno + "' ", con);
             SqlDataAdapter da_grid = new SqlDataAdapter(cmd);
             da_grid.Fill(dt_grid);
-            con.Close();
+            
             grdPeople.DataSource = dt_grid;
             grdPeople.DataBind();
-            //kk
+            con.Close();
 
         }
-
-        protected void RowUpdate(object sender, GridViewEditEventArgs e)
-        {
-            // Edit click
-
-            grdPeople.EditIndex = e.NewEditIndex;
-            grdPeople.DataBind();
-            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
-
-        }
-
-        protected void RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            //// Update click
-            ////string cnct = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["grid"].ConnectionString;
-            //SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
-            //if (con.State == ConnectionState.Closed)
-            //    con.Open();
-            //int id = e.RowIndex;
-            ////string tcnogrid = grdPeople.DataKeys[e.RowIndex].Value.ToString();
-            ////TextBox gridtcno = (TextBox)grdPeople.Rows[id].FindControl("Textbox1"); ////Güncelleme için Gridview deki EditItemTemplatefield alanında bulunan Textbox a yazılan yeni değeri alıyoruz.
-            ////TextBox gridadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox2");
-            ////TextBox gridsoyadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox3");
-            ////TextBox griddgtarh = (TextBox)grdPeople.Rows[id].FindControl("Textbox5");
-            ///////////
-
-            ////SqlCommand comd = new SqlCommand();
-            ////comd.Connection = con;
-            ////comd.CommandType = CommandType.StoredProcedure;
-            ////comd.CommandText = "usr_update";
-            ////comd.Parameters.AddWithValue("@tcno", tcnogrid);
-            ////comd.Parameters.AddWithValue("@updttcno", gridtcno.Text);
-            ////comd.Parameters.AddWithValue("@adi", gridadi.Text);
-            ////comd.Parameters.AddWithValue("@soyadi", gridsoyadi.Text);
-            ////comd.Parameters.AddWithValue("@dtarih", griddgtarh.Text);
-            //comd.ExecuteNonQuery();
-            //grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
-            //grdPeople.EditIndex = -1;
-            //grdPeople.DataBind();
-
-            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            int id = e.RowIndex;
-            //int userid = Convert.ToInt32(grdPeople.DataKeys[e.RowIndex].Value.ToString());
-            GridViewRow row = (GridViewRow)grdPeople.Rows[e.RowIndex];
-            //row.Cells[0].Controls[0];
-            TextBox gridAdi = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridSoyadi = (TextBox)grdPeople.Rows[id].FindControl("Textbox2");
-            TextBox gridDogTar = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridCaddeSokak = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridKapiNo = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridDaireNo = (TextBox)row.Cells[0].Controls[0];
-            TextBox gridAciklama = (TextBox)row.Cells[0].Controls[0];
-            // DropDownList gridParti = (DropDownList)grdPeople.Rows[id].FindControl("DropDownList1");
-
-
-            SqlCommand comd = new SqlCommand();
-            comd.Connection = con;
-            //comd.CommandType = CommandType.StoredProcedure;
-            //comd.CommandText = "usr_update";
-            comd.Parameters.AddWithValue("@Adı", gridAdi);
-            comd.Parameters.AddWithValue("@Soyadı", gridSoyadi);
-            comd.Parameters.AddWithValue("@[Doğum Tarihi]", gridDogTar);
-            comd.Parameters.AddWithValue("@[Cadde-Sokak]", gridCaddeSokak);
-            comd.Parameters.AddWithValue("@[Kapı No]", gridKapiNo);
-            comd.Parameters.AddWithValue("@[Daire No]", gridDaireNo);
-            comd.Parameters.AddWithValue("@Aciklama", gridAciklama);
-
-            comd.ExecuteNonQuery();
-            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
-            grdPeople.EditIndex = -1;
-            grdPeople.DataBind();
-        }
-
-        protected void RowCancelling(object sender, GridViewCancelEditEventArgs e)
-        {
-            // Cancel click
-            grdPeople.EditIndex = -1;
-            grdPeople.DataBind();
-            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
-
-        }
-
-        protected void RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            // Delete click
-        }
-
-       
-
-       
 
         
+
+        protected void grdPeople_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdPeople.PageIndex = e.NewPageIndex;
+            grdPeople.DataBind();
+        }
+
+        protected void grdPeople_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            personID = Convert.ToInt32(grdPeople.SelectedValue);
+            fillperson(personID);
+            partiDoldur();
+
+        }
+
+        public void fillperson(int selected_id) {
+
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select Adı,Soyadı from people where id=" + selected_id+ "",con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read()) {
+                lbl_lname.Text = dr["Soyadı"].ToString();
+                lbl_name.Text = dr["Adı"].ToString();
+            }
+            con.Close();
+
+        }
+
+        protected void btn_update_Click(object sender, EventArgs e)
+        {
+            personID = Convert.ToInt32(grdPeople.SelectedValue);
+            updatePerson(personID);
+            grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+
+        }
+
+        public void updatePerson(int id)
+        {
+            SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update people set PartiID = @PartiID,Aciklama=@Aciklama where id=" + id + "", con);
+            cmd.CommandType = CommandType.Text;
+            {
+                cmd.Parameters.AddWithValue("@PartiID",ddl_parti.SelectedValue);
+                cmd.Parameters.AddWithValue("@Aciklama",txt_info.Text);
+            
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+            grdPeople.DataBind();
+
+
+            
+        }
+        
+
     }
 }
