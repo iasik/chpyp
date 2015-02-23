@@ -145,7 +145,7 @@ namespace CHPv1
             personID = Convert.ToInt32(grdPeople.SelectedValue);
             if (updatePerson(personID))
             {
-                Response.Redirect("listele.aspx?sandikNo=" + Request.QueryString["sandikNo"]);
+                grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
             }
 
         }

@@ -138,19 +138,21 @@
                             </div>
                         </div>
                     </form>
-                    <div class="row">
-                        <asp:Chart ID="Chart1" runat="server" Height="408px" Width="488px">
-                            <Series>
-                            </Series>
-                            <ChartAreas>
-                                <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
-                            </ChartAreas>
-                            <Legends>
-                                <asp:Legend Name="Legend2">
-                                </asp:Legend>
-                            </Legends>
-                        </asp:Chart>
-                    </div>
+                    <asp:Panel ID="pnlGrafik" runat="server">
+                        <div class="row">
+                            <asp:Chart ID="Chart1" runat="server" Height="408px" Width="488px">
+                                <Series>
+                                </Series>
+                                <ChartAreas>
+                                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                                </ChartAreas>
+                                <Legends>
+                                    <asp:Legend Name="Legend2">
+                                    </asp:Legend>
+                                </Legends>
+                            </asp:Chart>
+                        </div>
+                    </asp:Panel>
                 </div>
             </div>
         </div>

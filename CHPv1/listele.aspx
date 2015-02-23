@@ -139,7 +139,7 @@
                     </div>
                 </div>
                 <asp:Panel ID="pnl_update" runat="server">
-                    <div class="row margin-bottom-20">
+                    <div class="row margin-bottom-10">
                         <div class="col-md-3" style="padding-left: 0;">
                             <label class="col-md-6 control-label">
                                 <asp:Label ID="lbl_name" runat="server" Text="Label"></asp:Label>
@@ -150,16 +150,21 @@
                             </label>
                         </div>
                         <label class="col-md-1 control-label">Parti</label>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <asp:DropDownList class="form-control" ID="ddl_parti" runat="server"></asp:DropDownList>
                         </div>
-                        <label class="col-md-1 control-label">Açıklama</label>
-                        <div class="col-md-3">
-                            <asp:TextBox class="form-control" ID="txt_info" runat="server"></asp:TextBox>
-                        </div>
+                        
+                        
                         <div class="col-md-1">
                             <asp:Button class="btn default" ID="btn_update" runat="server" Text="Kaydet" OnClick="btn_update_Click" />
                         </div>
+                        
+                    </div>
+                    <div class="row margin-bottom-20">
+                            <label class="col-md-2 control-label">Açıklama</label>
+                            <div class="col-md-8">
+                                <asp:TextBox class="form-control" ID="txt_info" TextMode="multiline" Columns="50" Rows="2" runat="server"></asp:TextBox>
+                            </div>
                     </div>
                 </asp:Panel>
                 <div class="dataTables_wrapper no-footer">
