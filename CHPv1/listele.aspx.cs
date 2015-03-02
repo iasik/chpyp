@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
+using System.Drawing;
 namespace CHPv1
 {
     public partial class listele : System.Web.UI.Page
@@ -21,7 +23,7 @@ namespace CHPv1
             if (!IsPostBack)
             {
                 ddl_mah_doldur();
-               
+
 
             }
             if (Request.QueryString["sandikNo"] != null)
@@ -66,11 +68,12 @@ namespace CHPv1
             ddlSandikNo.Items.Insert(0, new ListItem("Seçiniz", "0"));
         }
 
-        public void partiDoldur() {
+        public void partiDoldur()
+        {
             DataSet ds_parti = new DataSet();
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select PartiIsmi, PartiID from parti",con);
+            SqlCommand cmd = new SqlCommand("select PartiIsmi, PartiID from parti", con);
             SqlDataAdapter da_parti = new SqlDataAdapter(cmd);
             da_parti.Fill(ds_parti);
             con.Close();
@@ -78,7 +81,7 @@ namespace CHPv1
             ddl_parti.DataValueField = "PartiID";
             ddl_parti.DataSource = ds_parti;
             ddl_parti.DataBind();
-            
+
         }
 
         protected void ddlMah_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,17 +99,17 @@ namespace CHPv1
             DataTable dt_grid = new DataTable();
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select id, Adı, Soyadı, [Doğum Tarihi], [Cadde-Sokak], [Kapı No], [Daire No], Aciklama, PartiIsmi  From people, parti where people.PartiID = parti.PartiID AND [Sandik No]='" + sandikno + "' ", con);
+            SqlCommand cmd = new SqlCommand("select id, Adı, Soyadı, [Doğum Tarihi], [Cadde-Sokak], [Kapı No], [Daire No], Aciklama, PartiIsmi,ceptel From people, parti where people.PartiID = parti.PartiID AND [Sandik No]='" + sandikno + "' ", con);
             SqlDataAdapter da_grid = new SqlDataAdapter(cmd);
             da_grid.Fill(dt_grid);
-            
+
             grdPeople.DataSource = dt_grid;
             grdPeople.DataBind();
             con.Close();
 
         }
 
-        
+
 
         protected void grdPeople_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -126,15 +129,19 @@ namespace CHPv1
 
         }
 
-        public void fillperson(int selected_id) {
+        public void fillperson(int selected_id)
+        {
 
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select Adı,Soyadı from people where id=" + selected_id+ "",con);
+            SqlCommand cmd = new SqlCommand("select Adı,Soyadı,Aciklama,CepTel from people where id=" + selected_id + "", con);
             SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read()) {
+            while (dr.Read())
+            {
                 lbl_lname.Text = dr["Soyadı"].ToString();
                 lbl_name.Text = dr["Adı"].ToString();
+                txt_info.Text = dr["Aciklama"].ToString();
+                txtCep.Text = dr["CepTel"].ToString();
             }
             con.Close();
 
@@ -147,6 +154,8 @@ namespace CHPv1
             {
                 grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
             }
+            txt_info.Text = "";
+            txtCep.Text = "";
 
         }
 
@@ -154,20 +163,73 @@ namespace CHPv1
         {
             SqlConnection con = new SqlConnection("Data Source=.\\chp;Initial Catalog=chpyp;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("update people set PartiID = @PartiID,Aciklama=@Aciklama where id=" + id + "", con);
+            SqlCommand cmd = new SqlCommand("update people set PartiID = @PartiID,Aciklama=@Aciklama,ceptel=@ceptel where id=" + id + "", con);
             cmd.CommandType = CommandType.Text;
             {
-                cmd.Parameters.AddWithValue("@PartiID",ddl_parti.SelectedValue);
-                cmd.Parameters.AddWithValue("@Aciklama",txt_info.Text);
-            
+                cmd.Parameters.AddWithValue("@PartiID", ddl_parti.SelectedValue);
+                cmd.Parameters.AddWithValue("@Aciklama", txt_info.Text);
+                cmd.Parameters.AddWithValue("@ceptel", txtCep.Text);
             }
             cmd.ExecuteNonQuery();
             con.Close();
             return true;
 
-            
+
         }
-        
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.xls");
+            Response.Charset = "utf-8";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //To Export all pages
+                grdPeople.AllowPaging = false;
+                grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+
+                grdPeople.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in grdPeople.HeaderRow.Cells)
+                {
+                    cell.BackColor = grdPeople.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in grdPeople.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = grdPeople.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = grdPeople.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+                }
+
+                grdPeople.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+            }
+
+
+        }
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+        }
 
     }
 }

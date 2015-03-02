@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="listele.aspx.cs" Inherits="CHPv1.listele" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="listele.aspx.cs" Inherits="CHPv1.listele" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -115,7 +115,7 @@
 			</ul>
 			<!-- END PAGE BREADCRUMB -->
 
-            <form id="form1" runat="server" class="form-horizontal">
+            <form id="form1" runat="server">
                 <div class="row margin-bottom-20">
                     <div class="form-group">
                         <label class="col-md-1 control-label">İlçe</label>
@@ -137,36 +137,107 @@
                             </asp:DropDownList>
                         </div>
                     </div>
+                    
                 </div>
                 <asp:Panel ID="pnl_update" runat="server">
-                    <div class="row margin-bottom-10">
-                        <div class="col-md-3" style="padding-left: 0;">
-                            <label class="col-md-6 control-label">
-                                <asp:Label ID="lbl_name" runat="server" Text="Label"></asp:Label>
-                            </label>
+                    <div class="row">
+                        <div class="col-md-12">
 
-                            <label class="col-md-6 control-label">
-                                <asp:Label ID="lbl_lname" runat="server" Text="Label"></asp:Label>
-                            </label>
-                        </div>
-                        <label class="col-md-1 control-label">Parti</label>
-                        <div class="col-md-5">
-                            <asp:DropDownList class="form-control" ID="ddl_parti" runat="server"></asp:DropDownList>
-                        </div>
-                        
-                        
-                        <div class="col-md-1">
-                            <asp:Button class="btn default" ID="btn_update" runat="server" Text="Kaydet" OnClick="btn_update_Click" />
-                        </div>
-                        
-                    </div>
-                    <div class="row margin-bottom-20">
-                            <label class="col-md-2 control-label">Açıklama</label>
-                            <div class="col-md-8">
-                                <asp:TextBox class="form-control" ID="txt_info" TextMode="multiline" Columns="50" Rows="2" runat="server"></asp:TextBox>
+
+                            <div class="portlet light bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-equalizer font-blue-hoki"></i>
+                                        <span class="caption-subject font-blue-hoki bold uppercase">Seçmen Güncelle</span>
+                                        <span class="caption-helper">seçmen formu..</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"></a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                                        <a href="" class="reload"></a>
+                                        <a href="" class="remove"></a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body form">
+                                    <!-- BEGIN FORM-->
+                                    <div class="form-body">
+                                        <h3 class="form-section">Seçmen Detayları</h3>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Adı:</label>
+                                                    <asp:Label ID="lbl_name" runat="server" Text="Label"></asp:Label>
+
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Soyadı:</label>
+                                                    <asp:Label ID="lbl_lname" runat="server" Text="Label"></asp:Label>
+
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Parti</label>
+                                                    <asp:DropDownList class="form-control" ID="ddl_parti" runat="server"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Cep</label>
+                                                    <asp:TextBox ID="txtCep" class="form-control" runat="server"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <div class="form-group">
+                                                    <label class="control-label">Açıklama</label>
+                                                    <asp:TextBox class="form-control" ID="txt_info" TextMode="multiline" Columns="50" Rows="2" runat="server"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions right">
+                                        <button type="button" class="btn default">Cancel</button>
+                                        <asp:Button class="btn default" ID="btn_update" runat="server" Text="Kaydet" OnClick="btn_update_Click" />
+                                    </div>
+
+                                    <!-- END FORM-->
+                                </div>
                             </div>
+                        </div>
                     </div>
                 </asp:Panel>
+                <div class="portlet light bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-equalizer font-blue-hoki"></i>
+                                        <span class="caption-subject font-blue-hoki bold uppercase">Seçmen Tablosu</span>
+                                        <span class="caption-helper">seçmen ler..</span>
+                                    </div>
+                                    
+                                    <div class="tools">
+                                        <asp:Button ID="Button1" runat="server" class="btn green" Text="Excel" OnClick="Button1_Click" />
+                                        <a href="" class="collapse"></a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                                        <a href="" class="reload"></a>
+                                        <a href="" class="remove"></a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body form">
+                                    <!-- BEGIN FORM-->
+                                    <div class="form-body">
                 <div class="dataTables_wrapper no-footer">
                     <asp:GridView ID="grdPeople" runat="server" AllowPaging="True" CssClass="table table-striped table-hover table-bordered dataTable no-footer" EnableSortingAndPagingCallbacks="False" AutoGenerateSelectButton="True" DataKeyNames="id" EnableTheming="True" OnPageIndexChanging="grdPeople_PageIndexChanging" OnSelectedIndexChanged="grdPeople_SelectedIndexChanged" >
                         <PagerStyle  CssClass="DDFooter"/>
@@ -176,6 +247,8 @@
                         />
                      </asp:GridView>
                 </div>
+                                        </div>
+                            </div>
             </form>
 
 
@@ -188,7 +261,9 @@
 	<div class="container">
 		 2015 &copy; Chp Kocaeli İl Yönetim Başkanlığı. Tüm Hakları Saklıdır.
 	</div>
-</div>
+            </div>
+	
+
 <div class="scroll-to-top">
 	<i class="icon-arrow-up"></i>
 </div>
