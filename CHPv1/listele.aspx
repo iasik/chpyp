@@ -219,12 +219,13 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <div class="portlet light bordered">
+                <asp:Panel ID="pnlGridView" runat="server">
+                    <div class="portlet light bordered">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-equalizer font-blue-hoki"></i>
                                         <span class="caption-subject font-blue-hoki bold uppercase">Seçmen Tablosu</span>
-                                        <span class="caption-helper">seçmen ler..</span>
+                                        <span class="caption-helper">seçmenler..</span>
                                     </div>
                                     
                                     <div class="tools">
@@ -235,20 +236,22 @@
                                         <a href="" class="remove"></a>
                                     </div>
                                 </div>
+                    
                                 <div class="portlet-body form">
                                     <!-- BEGIN FORM-->
                                     <div class="form-body">
-                <div class="dataTables_wrapper no-footer">
-                    <asp:GridView ID="grdPeople" runat="server" AllowPaging="True" CssClass="table table-striped table-hover table-bordered dataTable no-footer" EnableSortingAndPagingCallbacks="False" AutoGenerateSelectButton="True" DataKeyNames="id" EnableTheming="True" OnPageIndexChanging="grdPeople_PageIndexChanging" OnSelectedIndexChanged="grdPeople_SelectedIndexChanged" >
-                        <PagerStyle  CssClass="DDFooter"/>
-                        <PagerSettings
-                            Mode="NumericFirstLast"
-                            PageButtonCount="5"
-                        />
-                     </asp:GridView>
-                </div>
+                                        <div class="dataTables_wrapper no-footer">
+                                            <asp:GridView ID="grdPeople" runat="server" AllowPaging="True" CssClass="table table-striped table-hover table-bordered dataTable no-footer" EnableSortingAndPagingCallbacks="False" AutoGenerateSelectButton="True" DataKeyNames="id" EnableTheming="True" OnPageIndexChanging="grdPeople_PageIndexChanging" OnSelectedIndexChanged="grdPeople_SelectedIndexChanged">
+                                                <PagerStyle CssClass="DDFooter" />
+                                                <PagerSettings
+                                                    Mode="NumericFirstLast"
+                                                    PageButtonCount="5" />
+                                            </asp:GridView>
+                                        </div>
                                         </div>
                             </div>
+                        </div>
+                    </asp:Panel>
             </form>
 
 

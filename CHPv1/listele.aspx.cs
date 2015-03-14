@@ -23,14 +23,18 @@ namespace CHPv1
             if (!IsPostBack)
             {
                 ddl_mah_doldur();
+                pnlGridView.Visible = false;
 
 
             }
             if (Request.QueryString["sandikNo"] != null)
             {
                 grd_doldur(Convert.ToDouble(Request.QueryString["sandikNo"]));
+                
             }
             pnl_update.Visible = false;
+            
+
 
         }
 
@@ -106,7 +110,7 @@ namespace CHPv1
             grdPeople.DataSource = dt_grid;
             grdPeople.DataBind();
             con.Close();
-
+            pnlGridView.Visible = true;
         }
 
 
@@ -182,9 +186,15 @@ namespace CHPv1
         {
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=SandikNo "+Convert.ToDouble(Request.QueryString["sandikNo"])+".xls");
             Response.Charset = "utf-8";
-            Response.ContentType = "application/vnd.ms-excel";
+            Response.ContentType = "application/ms-excel";
+
+
+            
+            Response.ContentEncoding = System.Text.Encoding.Unicode;
+            Response.BinaryWrite(System.Text.Encoding.Unicode.GetPreamble());
+
             using (StringWriter sw = new StringWriter())
             {
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
